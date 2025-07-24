@@ -57,14 +57,23 @@ public class Settings {
         config.save();
     }
 
-    private void updateMessagingSettings() {
-        File file = null;
-        if (!Setting.DEBUG_FILE.asString().isEmpty()) {
-            file = new File(CitizensAPI.getPlugin().getDataFolder(), Setting.DEBUG_FILE.asString());
-        }
-        Messaging.configure(file, Setting.DEBUG_MODE.asBoolean(), Setting.MESSAGE_COLOUR.asString(),
-                Setting.HIGHLIGHT_COLOUR.asString(), Setting.ERROR_COLOUR.asString());
+private void updateMessagingSettings() {
+    File file = null;
+    if (!Setting.DEBUG_FILE.asString().isEmpty()) {
+        file = new File(CitizensAPI.getPlugin().getDataFolder(), Setting.DEBUG_FILE.asString());
     }
+    
+    // 补充缺失的boolean参数（假设为Setting.SOME_BOOLEAN_SETTING.asBoolean()）
+    // 请根据实际业务逻辑确定这个布尔值的来源
+    Messaging.configure(
+        file, 
+        Setting.DEBUG_MODE.asBoolean(), 
+        Setting.SOME_BOOLEAN_SETTING.asBoolean(), // 补充缺失的boolean参数
+        Setting.MESSAGE_COLOUR.asString(),
+        Setting.HIGHLIGHT_COLOUR.asString(),
+        Setting.ERROR_COLOUR.asString()
+    );
+}
 
     public enum Setting {
         ALWAYS_USE_NAME_HOLOGRAM("Always use holograms for names instead of only for hex colors / placeholders",
